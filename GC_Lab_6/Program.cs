@@ -16,17 +16,25 @@ namespace GC_Lab_6
             {
                 do
                 {
-
                     int sides = GetVaildNumInput(@"^\d{1,2}", "How many sides to the dice?");
-
                     Random rnd = new Random();
                     int dice = rnd.Next(1, sides);
                     int dice2 = rnd.Next(1, sides);
+                    if (dice == 1 && dice2 == 1)
+                    {
+                        Console.WriteLine("Snake Eyes");
+                    }
+                    if (dice == 6 && dice2 == 6)
+                    {
+                        Console.WriteLine("Deck");
+                    }
+                    if (dice == 6 || dice2 == 6 || dice == 7 || dice2 == 7)
+                    {
+                        Console.WriteLine("Crab");
+                    }
                     Console.WriteLine($"{dice} and {dice2}");
                     ans = GetVaildInput(@"^[yY]|[nN]{1}$", "Wanna go again (y/n)");
-
-
-
+                    
                 } while (ans.ToLower() == "y");
             }
             catch (System.ArgumentNullException)
